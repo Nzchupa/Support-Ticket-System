@@ -1,0 +1,296 @@
+# 📚 Wichtige Git Bash Befehle (Spickzettel)
+
+## 📌 Übersicht
+
+Diese Befehle helfen dir bei der täglichen Arbeit mit Git (Projekt, Branches, Fehler, Debugging).
+
+---
+
+# 🔍 Status & Informationen
+
+```bash
+git status
+```
+
+→ zeigt Änderungen, neue Dateien, aktuellen Branch
+
+```bash
+git log
+```
+
+→ zeigt Commit-Historie
+
+```bash
+git log --oneline
+```
+
+→ kurze Übersicht der Commits
+
+```bash
+git diff
+```
+
+→ zeigt Änderungen im Code
+
+---
+
+# 📂 Dateien verwalten
+
+```bash
+git add .
+```
+
+→ alle Änderungen hinzufügen
+
+```bash
+git add datei.java
+```
+
+→ einzelne Datei hinzufügen
+
+```bash
+git restore datei.java
+```
+
+→ Änderungen verwerfen
+
+```bash
+git rm datei.java
+```
+
+→ Datei löschen und Git informieren
+
+---
+
+# 🧠 Commits
+
+```bash
+git commit -m "Nachricht"
+```
+
+→ Änderungen speichern
+
+```bash
+git commit --amend
+```
+
+→ letzten Commit ändern
+
+---
+
+# 🌿 Branches
+
+```bash
+git branch
+```
+
+→ lokale Branches anzeigen
+
+```bash
+git branch -a
+```
+
+→ alle Branches anzeigen
+
+```bash
+git branch -r
+```
+
+→ nur Remote-Branches
+
+```bash
+git checkout branch-name
+```
+
+→ Branch wechseln
+
+```bash
+git checkout -b neuer-branch
+```
+
+→ neuen Branch erstellen
+
+```bash
+git branch -d branch-name
+```
+
+→ Branch löschen
+
+```bash
+git branch -D branch-name
+```
+
+→ Branch **erzwingen** löschen
+
+---
+
+# 🔄 Synchronisation (GitHub)
+
+```bash
+git pull
+```
+
+→ Änderungen holen
+
+```bash
+git push
+```
+
+→ Änderungen hochladen
+
+```bash
+git fetch
+```
+
+→ Updates holen (ohne Merge)
+
+```bash
+git fetch --prune
+```
+
+→ alte Remote-Branches entfernen
+
+---
+
+# 🔗 Remote (GitHub Verbindung)
+
+```bash
+git remote -v
+```
+
+→ zeigt Repository URL
+
+```bash
+git remote add origin URL
+```
+
+→ Repository verbinden
+
+```bash
+git remote remove origin
+```
+
+→ Verbindung löschen
+
+---
+
+# ⚠️ Fehler & Fixes
+
+```bash
+git stash
+```
+
+→ Änderungen zwischenspeichern
+
+```bash
+git stash pop
+```
+
+→ Änderungen zurückholen
+
+```bash
+git reset --hard
+```
+
+→ alles zurücksetzen (VORSICHT!)
+
+```bash
+git clean -fd
+```
+
+→ nicht getrackte Dateien löschen
+
+```bash
+git gc
+```
+
+→ Git bereinigen
+
+```bash
+rm -rf .git/index.lock
+```
+
+→ Lock-Fehler beheben
+
+---
+
+# 🔀 Merge & Konflikte
+
+```bash
+git merge branch-name
+```
+
+→ Branch zusammenführen
+
+```bash
+git rebase main
+```
+
+→ Branch neu aufbauen
+
+---
+
+# 🧪 Nützliche Befehle
+
+```bash
+git clone URL
+```
+
+→ Projekt herunterladen
+
+```bash
+git init
+```
+
+→ neues Repository erstellen
+
+```bash
+ls
+```
+
+→ Dateien anzeigen
+
+```bash
+cd ordner
+```
+
+→ Ordner wechseln
+
+---
+
+# ✔️ Typischer Workflow
+
+```bash
+git clone URL
+cd projekt
+
+git checkout main
+git pull
+
+git checkout -b feature/name
+
+git add .
+git commit -m "..."
+
+git push origin feature/name
+```
+
+---
+
+# ⚠️ Wichtige Hinweise
+
+* ❗ `git reset --hard` löscht ALLE Änderungen
+* ❗ immer `git pull` vor der Arbeit
+* ❗ immer `git push` nach der Arbeit
+* ❗ nie direkt in `main` arbeiten
+
+---
+
+# 🎯 Ziel
+
+Mit diesen Befehlen kannst du:
+
+* Projekte verwalten
+* Fehler beheben
+* im Team arbeiten
+* Git professionell nutzen
