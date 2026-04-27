@@ -1,0 +1,343 @@
+# 📘 Testprojekt (Java + GitHub + Eclipse) – Vollständige Anleitung
+
+## 📌 Beschreibung
+
+Dieses Projekt dient zum Lernen von:
+
+* Git / GitHub (Versionskontrolle)
+* Eclipse (Java-Entwicklung)
+* Teamarbeit (Branches, Commit, Push, Pull)
+
+---
+
+# ⚙️ 0. Voraussetzungen (sehr wichtig)
+
+## Git installieren
+
+👉 Git
+https://git-scm.com/downloads
+
+## Eclipse installieren
+
+👉 Eclipse IDE
+https://www.eclipse.org/downloads/
+
+---
+
+# 🚀 1. Projekt herunterladen (Clone)
+
+## Git Bash / PowerShell
+
+```bash
+git clone https://github.com/Nzchupa/Test.git
+cd Test
+```
+
+## Kontrolle
+
+```bash
+ls
+```
+
+---
+
+# 🌿 2. Arbeiten mit Branches
+
+## ❗ Regel:
+
+**Nie direkt in `main` arbeiten**
+
+## ✔ Befehle (wie im Original)
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b feature/aufgabe-name
+```
+
+## Beispiel:
+
+```bash
+git checkout -b feature/java-project
+```
+
+---
+
+# 💻 3. Code hinzufügen
+
+## Struktur:
+
+```
+Test
+├── src
+│   └── test
+│       └── Test.java
+├── README.md
+└── .gitignore
+```
+
+## ❗ WICHTIG:
+
+* NICHT `.git` kopieren
+
+```bash
+rm -rf projekt/.git
+```
+
+---
+
+# 🧠 4. Änderungen speichern (Commit + Push)
+
+## ✔ Original Befehle
+
+```bash
+git add .
+git commit -m "Beschreibung der Änderungen"
+git push origin feature/branch-name
+```
+
+## Beispiel:
+
+```bash
+git add (Ordner name)
+git commit -m "Add Test.java"
+git push origin feature/java-project
+```
+
+---
+
+# 🔄 5. Updates holen (Pull)
+
+```bash
+git checkout main
+git pull origin main
+```
+
+---
+
+# 🧪 6. Projekt in Eclipse öffnen
+
+```
+File → Import → Git → Existing local repository
+```
+
+Pfad:
+
+```
+C:\Users\Macbook\git\Test
+```
+
+---
+
+# 🔄 7. Arbeiten mit Git in Eclipse
+
+## 📥 Vor der Arbeit
+
+```
+Team → Switch To → main
+Team → Pull
+Team → Switch To → New Branch
+```
+
+## 💾 Commit
+
+```
+Team → Commit
+```
+
+## 📤 Push
+
+```
+Team → Push
+```
+
+oder:
+
+```
+Commit and Push
+```
+
+---
+
+# 🔄 Unterschied
+
+* Commit → lokal speichern
+* Push → hochladen
+* Pull → herunterladen
+
+---
+
+# 🔐 8. GitHub Login
+
+👉 GitHub
+
+Token erstellen:
+https://github.com/settings/tokens
+
+---
+
+# 🌐 9. GitHub Nutzung
+
+## Branch erstellen
+
+```
+feature/login
+```
+
+## Pull Request
+
+* Compare & Pull Request
+* Merge
+
+---
+
+# ⚠️ Häufige Fehler
+
+## ❌ Falsche Befehle
+
+```
+add .
+push origin main
+```
+
+✔ Richtig:
+
+```bash
+git add .
+git push origin main
+```
+
+---
+
+## ❌ Datei nicht gefunden
+
+```
+did not match any files
+```
+
+✔ Lösung:
+
+```bash
+ls
+```
+
+---
+
+## ❌ Falscher Ordner
+
+```
+is outside repository
+```
+
+✔ Lösung:
+
+```bash
+cd Test
+```
+
+---
+
+## ❌ Zeichenfehler
+
+```
+command not found: $'\302...'
+```
+
+✔ Lösung:
+→ manuell schreiben
+
+---
+
+## ❌ Push Fehler
+
+```
+git-receive-pack not permitted
+```
+
+✔ Lösung:
+→ Token verwenden
+
+---
+
+## ❌ Embedded Git
+
+```
+embedded git repository
+```
+
+✔ Lösung:
+
+```bash
+rm -rf projekt/.git
+```
+
+---
+
+## ❌ Kein Pull
+
+→ Konflikte
+
+✔ Lösung:
+→ immer Pull
+
+---
+
+## ❌ Nur Commit
+
+→ nicht auf GitHub
+
+✔ Lösung:
+→ Push machen
+
+---
+
+## ❌ Merge Konflikt
+
+```bash
+git pull
+git add .
+git commit -m "resolve conflict"
+```
+
+---
+
+# ✔️ Regeln
+
+* Kein Arbeiten in main
+* Jeder Task eigener Branch
+* Immer Pull vorher
+* Immer Push nachher
+
+---
+
+# ✔️ Standard Workflow
+
+## Start:
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b feature/name
+```
+
+## Ende:
+
+```bash
+git add .
+git commit -m "..."
+git push origin feature/name
+```
+
+---
+
+# 📌 Ziel
+
+Alle können:
+
+* klonen
+* arbeiten
+* pushen
+* ohne Fehler zusammenarbeiten
+
+---
+
