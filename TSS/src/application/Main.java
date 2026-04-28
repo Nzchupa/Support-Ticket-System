@@ -2,22 +2,20 @@ package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("/view/LoginView.fxml"));
-            AnchorPane root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
 
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(loader.load());
+
+            primaryStage.setTitle("TSSupport System");
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Ticket-Support-System – Login");
             primaryStage.show();
 
         } catch (Exception e) {

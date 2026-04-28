@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.HomeViewController"
+            prefWidth="900"
+            prefHeight="600"
+            style="-fx-background-color: #0f172a;">
+
+    <top>
+        <HBox spacing="25"
+              style="-fx-background-color: #111827; -fx-padding: 18;"
+              alignment="CENTER_LEFT">
+
+            <Label text="TSSupport"
+                   style="-fx-text-fill: #38bdf8; -fx-font-size: 26px; -fx-font-weight: bold;" />
+
+            <Button text="Startseite"
+                    onAction="#showHome"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px;" />
+
+            <Button text="Projekt"
+                    onAction="#showProjectInfo"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px;" />
+
+            <Button text="Anmelden"
+                    onAction="#openLogin"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 15px;" />
+
+            <Button text="Registrieren"
+                    onAction="#openRegister"
+                    style="-fx-background-color: #38bdf8; -fx-text-fill: #020617; -fx-font-weight: bold; -fx-background-radius: 8;" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="25"
+              alignment="CENTER"
+              style="-fx-padding: 40;">
+
+            <Label fx:id="titleLabel"
+                   text="TSSupport System"
+                   style="-fx-text-fill: white; -fx-font-size: 48px; -fx-font-weight: bold;" />
+
+            <Label fx:id="descriptionLabel"
+                   text="Ein modernes Ticket- und Supportsystem für Benutzer, Admins und Projektverwaltung."
+                   wrapText="true"
+                   maxWidth="650"
+                   style="-fx-text-fill: #cbd5e1; -fx-font-size: 18px; -fx-text-alignment: center;" />
+
+            <HBox spacing="20" alignment="CENTER">
+
+                <Button text="Jetzt anmelden"
+                        onAction="#openLogin"
+                        style="-fx-background-color: #38bdf8; -fx-text-fill: #020617; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12 25; -fx-background-radius: 10;" />
+
+                <Button text="Registrieren"
+                        onAction="#openRegister"
+                        style="-fx-background-color: #1e293b; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 12 25; -fx-background-radius: 10;" />
+            </HBox>
+
+        </VBox>
+    </center>
+
+    <bottom>
+        <Label text="© 2026 TSSupport System"
+               BorderPane.alignment="CENTER"
+               style="-fx-text-fill: #94a3b8; -fx-padding: 15;" />
+    </bottom>
+
+</BorderPane>
