@@ -5,11 +5,14 @@
 <?import javafx.geometry.Insets?>
 
 <ScrollPane fitToWidth="true"
+            fx:controller="controller.NavigationController"
             style="-fx-background: #1e1e1e; -fx-background-color: #1e1e1e;"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml">
 
-    <VBox spacing="15" style="-fx-background-color: #1e1e1e;">
+   <VBox fx:id="rootPane"
+      spacing="15"
+      style="-fx-background-color: #1e1e1e;">
         <padding>
             <Insets top="25" right="25" bottom="25" left="25"/>
         </padding>
@@ -42,7 +45,14 @@
         </HBox>
 
         <Separator style="-fx-opacity: 0.3;"/>
-
+<Button text="⬅ Zurück zur Home Page"
+        onAction="#openHome"
+        style="-fx-background-color: #2563eb;
+               -fx-text-fill: white;
+               -fx-font-weight: bold;
+               -fx-background-radius: 8;
+               -fx-padding: 10 18;
+               -fx-cursor: hand;"/>
         <Label text="⚙️ Ticket-Konfiguration (Kategorien, Status, Priorität)"
                style="-fx-text-fill: #cccccc; -fx-font-weight: bold; -fx-font-size: 14;"/>
 

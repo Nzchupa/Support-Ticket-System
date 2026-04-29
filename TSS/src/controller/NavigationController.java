@@ -1,8 +1,13 @@
 package controller;
 
+import java.io.IOException;
+
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.UserRole;
 import tiket.TicketSeite;
@@ -26,10 +31,15 @@ import tiket.TicketSeite;
  */
 public class NavigationController {
 
+	       
+	@FXML
+	
+
     // ── Singleton ─────────────────────────────────────────────────────────────
 
     private static NavigationController instance;
-
+    @FXML
+    private VBox rootPane;
     public static NavigationController getInstance() {
         if (instance == null) {
             instance = new NavigationController();
@@ -121,4 +131,21 @@ public class NavigationController {
     private boolean fxmlExists(String fxmlFile) {
         return getClass().getResource("/view/" + fxmlFile) != null;
     }
+    @FXML
+    private void openHome() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            stage.setTitle("TSSupport System");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 }

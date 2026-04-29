@@ -1,12 +1,15 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
 
+import java.io.IOException;
 import java.util.Optional;
 
 /**
@@ -159,6 +162,21 @@ public class LoginViewController {
             registerMessageLabel.setStyle(
                 success ? "-fx-text-fill: #90EE90;" : "-fx-text-fill: #FF6B6B;"
             );
+        }
+    }
+    @FXML
+    private void openHome() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            Stage stage = (Stage) loginErrorLabel.getScene().getWindow();
+            stage.setTitle("TSSupport System");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

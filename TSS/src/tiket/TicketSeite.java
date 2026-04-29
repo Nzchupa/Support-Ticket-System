@@ -13,7 +13,10 @@ package tiket;
 	import javafx.stage.Stage;
 	import javafx.collections.FXCollections;
 	import javafx.collections.ObservableList;
-	import java.io.File;
+import javafx.fxml.FXMLLoader;
+
+import java.io.File;
+import java.io.IOException;
 
 	public class TicketSeite {
 
@@ -182,12 +185,14 @@ package tiket;
 	        Button loeschenBtn     = new Button("🗑️ Löschen");
 	        Button alleLoeschenBtn = new Button("🧹 Alle löschen");
 	        Button suchenBtn       = new Button("🔍 Suchen");
-
+	        Button zurueckBtn = new Button("⬅ Zurück zur Home Page");
+	        
 	        styleButton(speichernBtn,    "#4CAF50");
 	        styleButton(bearbeitenBtn,   "#2196F3");
 	        styleButton(loeschenBtn,     "#f44336");
 	        styleButton(alleLoeschenBtn, "#FF5722");
 	        styleButton(suchenBtn,       "#9C27B0");
+	        styleButton(zurueckBtn, "#2563eb");
 
 	        // ===== SPEICHERN =====
 	        speichernBtn.setOnAction(e -> {
@@ -226,6 +231,7 @@ package tiket;
 	                zaehler.setText("📊 Tickets gesamt: " + manager.getTicketListe().size());
 	            }
 	        });
+	        zurueckBtn.setOnAction(e -> openHome(stage));
 
 	        // ===== LÖSCHEN =====
 	        loeschenBtn.setOnAction(e -> {
@@ -287,6 +293,7 @@ package tiket;
 	        layout.setStyle("-fx-background-color: " + DARK_BG + ";");
 	        layout.getChildren().addAll(
 	            appTitel,
+	            zurueckBtn,
 	            new Separator(),
 	            styledLabel("Titel:"),        titelFeld,
 	            styledLabel("Beschreibung:"), beschreibungFeld,
@@ -374,5 +381,17 @@ package tiket;
 	        label.setFont(Font.font("Arial", FontWeight.BOLD, 13));
 	        return label;
 	    }
+	    private void openHome(Stage stage) {
+	        try {
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
+	            Scene scene = new Scene(loader.load());
 
+	            stage.setTitle("TSSupport System");
+	            stage.setScene(scene);
+	            stage.show();
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 }

@@ -66,9 +66,7 @@
                             text=""
                             wrapText="true"
                             style="-fx-text-fill: #FF6B6B; -fx-font-size: 12px;"/>
-
-                    </children>
-                </VBox>
+		
 
                 <!-- ── Registrierungs-Bereich ────────────────────── -->
                 <VBox layoutX="75.0" layoutY="210.0"
@@ -106,7 +104,11 @@
                             text=""
                             wrapText="true"
                             style="-fx-font-size: 12px;"/>
-
+<Button text="Zurück zur Home Page"
+       		 onAction="#openHome"
+       		 style="-fx-background-color: #1e293b; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20;" />
+                    </children>
+                </VBox>
                     </children>
                 </VBox>
 

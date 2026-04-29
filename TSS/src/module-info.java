@@ -2,6 +2,7 @@ module SupportTicketSystem {
 
     requires javafx.controls;
     requires javafx.fxml;
+	requires javafx.graphics;
 
     opens application to javafx.fxml;
     opens controller to javafx.fxml;
