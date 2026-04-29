@@ -57,14 +57,21 @@ public class LoginViewController {
         String password = loginPasswordField.getText();
 
         // Validierung
-        if (email.isEmpty() || password.isEmpty()) {
-            showLoginError("Bitte E-Mail und Passwort eingeben.");
+        if (email.isEmpty() || email.contains(" ")) {
+            showLoginError("Bitte E-Mail ohne Leerzeichen eingeben!.");
             return;
         }
         if (!email.contains("@")) {
             showLoginError("Bitte eine gültige E-Mail-Adresse eingeben.");
             return;
         }
+        if (password.isEmpty() || password.contains(" ")) {
+            showLoginError("Bitte Passwort ohne Leerzeichen eingeben!.");
+            return;
+        }
+       
+        
+        
 
         // Authentifizierung
         Optional<User> result = authController.login(email, password);
@@ -97,8 +104,8 @@ public class LoginViewController {
         String password = registerPasswordField.getText();
 
         // Validierung
-        if (email.isEmpty() || password.isEmpty()) {
-            showRegisterMessage("Bitte E-Mail und Passwort eingeben.", false);
+        if (email.isEmpty() || email.contains(" ")) {
+            showRegisterMessage("Bitte E-Mail ohne Leerzeichen eingeben.", false);
             return;
         }
         if (!email.contains("@")) {
@@ -109,11 +116,16 @@ public class LoginViewController {
             showRegisterMessage("Das Passwort muss mindestens 6 Zeichen lang sein.", false);
             return;
         }
+        if (password.isEmpty() || password.contains(" ")) {
+            showRegisterMessage("Bitte Passwort ohne Leerzeichen eingeben!.",false);
+            return;
+        }
         if (authController.emailExists(email)) {
             showRegisterMessage("Diese E-Mail-Adresse ist bereits registriert.", false);
             return;
         }
-
+        
+      
         // Registrierung
         boolean success = authController.register(email, password);
 
