@@ -185,6 +185,10 @@ import java.io.IOException;
 	        Button loeschenBtn     = new Button("🗑️ Löschen");
 	        Button alleLoeschenBtn = new Button("🧹 Alle löschen");
 	        Button suchenBtn       = new Button("🔍 Suchen");
+	        /*
+	         * Button zum Zurückkehren zur Home Page.
+	         * Öffnet die zentrale Startseite des Systems.
+	         */
 	        Button zurueckBtn = new Button("⬅ Zurück zur Home Page");
 	        
 	        styleButton(speichernBtn,    "#4CAF50");
@@ -381,6 +385,7 @@ import java.io.IOException;
 	        label.setFont(Font.font("Arial", FontWeight.BOLD, 13));
 	        return label;
 	    }
+	   
 	    private void openHome(Stage stage) {
 	        try {
 	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));

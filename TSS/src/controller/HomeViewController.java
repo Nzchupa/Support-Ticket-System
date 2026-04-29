@@ -7,7 +7,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
+/** 
+ * ============================================================================
+ * Home Page für das Ticket-Support-System
+ * ============================================================================
+ *
+ * Diese View dient als Startseite des Projekts.
+ *
+ * Funktionen:
+ * - Modernes Hauptmenü
+ * - Navigation zu:
+ *      • Projektinformationen
+ *      • Anmeldung
+ *      • Registrierung
+ * - Verbindung mit LoginView.fxml
+ * - Übersichtliche Benutzeroberfläche
+ *
+ * Ziel:
+ * Verbesserung der Benutzerführung und moderner Einstieg
+ * in das Ticket-Support-System.
+ *
+ * Autor: Nazar Chuprii
+ * ============================================================================
+ **/
 public class HomeViewController {
 
     @FXML

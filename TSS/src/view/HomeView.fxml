@@ -6,6 +6,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<!--
+ * ============================================================================
+ * HomeView.fxml
+ * ============================================================================
+ *
+ * Diese FXML-Datei definiert die grafische Startseite
+ * des Ticket-Support-Systems.
+ *
+ * Inhalte:
+ * - Navigationsleiste
+ * - Projektinformationen
+ * - Buttons für Anmeldung und Registrierung
+ * - Modernes Layout im Dark-Mode Design
+ *
+ * Die View ist mit dem HomeViewController verbunden
+ * und dient als zentrale Startseite der Anwendung.
+ *
+ * Autor: Nazar Chuprii
+ * ============================================================================
+ * --> 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.HomeViewController"
