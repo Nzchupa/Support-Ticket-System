@@ -8,7 +8,7 @@ public class User {
 
     private final String email;
     private final String passwordHash; // SHA-256 Hash, niemals Klartext
-    private final UserRole role;
+    private UserRole role;
 
     public User(String email, String passwordHash, UserRole role) {
         this.email        = email.toLowerCase().trim();
@@ -28,6 +28,10 @@ public class User {
     
     public UserRole getRole(){ 
     	return role; 
+    }
+    
+    public void setRole(UserRole role) {
+    	this.role = role;
     }
 
     /** Anzeigename: der lokale Teil vor dem @-Zeichen. */

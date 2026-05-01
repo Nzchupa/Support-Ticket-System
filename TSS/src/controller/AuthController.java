@@ -4,9 +4,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import database.UserDAO;
 import model.User;
 import model.UserRole;
 
@@ -19,8 +21,8 @@ public class AuthController {
 
     private static AuthController instance;
 
-    private AuthController() {
-        seedDemoUsers();
+    public AuthController() {
+       
     }
 
     public static AuthController getInstance() {
@@ -32,16 +34,9 @@ public class AuthController {
 
 
     /** Key = E-Mail in Kleinschreibung */
-    private final Map<String, User> userStore = new HashMap<>();
+    private final UserDAO userDAO = new UserDAO();
 
-    /**
-     * Demo-Benutzer für Entwicklung/Tests.
-     */
-    private void seedDemoUsers() {
-        registerInternal("admin@admin.com",    "admin123");
-        registerInternal("support@support.com", "support123");
-        registerInternal("user@example.com",    "user123");
-    }
+
 
     /**
      * Meldet einen Benutzer an.
@@ -56,16 +51,14 @@ public class AuthController {
     		return Optional.empty();
     	}
 
-        User user = userStore.get(email.toLowerCase().trim());
+        Optional<User> result = userDAO.findByEmail(email);
 
-        if (user == null) {
+        if (result.isEmpty()) {
         	return Optional.empty();
         }
-
-        if (!user.getPasswordHash().equals(hashPassword(password))) {
-            return Optional.empty();
-        }
-
+        
+        User user = result.get();
+        
         UserSessionController.getInstance().setCurrentUser(user);
         return Optional.of(user);
     }
@@ -83,8 +76,14 @@ public class AuthController {
     	if (isBlank(email) || isBlank(password)) {
         	return false;
         }
+    	if(userDAO.emailExists(email)) {
+    		return false;
+    	}
+    	
+    	UserRole role = detectRole(email);
+    	String hash = hashPassword(password);
         
-        return registerInternal(email, password);
+        return userDAO.insert(email, hash, role);
     }
 
     /**
@@ -112,28 +111,13 @@ public class AuthController {
     	if (isBlank(email)) {
         	return false;
         }
-        return userStore.containsKey(email.toLowerCase().trim());
-    }
-
-    // ── Interne Helfer ─────────────────────────────────────────────────────────
-
-    private boolean registerInternal(String email, String password) {
-        
-    	String key = email.toLowerCase().trim();
-        if (userStore.containsKey(key)) {
-        	return false; // bereits vorhanden
-        }
-
-        UserRole role = detectRole(email);
-        String hash   = hashPassword(password);
-        userStore.put(key, new User(email, hash, role));
-        return true;
+        return userDAO.emailExists(email);
     }
 
     /**
      * SHA-256-Hashing
      */
-    private String hashPassword(String password) {
+    public String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] bytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
@@ -149,5 +133,17 @@ public class AuthController {
 
     private boolean isBlank(String s) {
         return s == null || s.trim().isEmpty();
+    }
+    
+    public List<User> getAllUsers(){
+    	return userDAO.findAll();
+    }
+    
+    public boolean assignRole(String email, UserRole newRole) {
+    	if(isBlank(email) || newRole == null) {
+    		return false;
+    	}
+    	
+    	return userDAO.updateRole(email, newRole);
     }
 }
