@@ -4,16 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
+<!--
+    AdminView.fxml – Oberfläche für den Admin-Bereich.
+
+    fx:controller="controller.AdminViewController"
+    → JavaFX lädt automatisch den AdminViewController und verbindet
+      alle fx:id-Elemente und onAction-Methoden mit dieser Klasse.
+-->
 <ScrollPane fitToWidth="true"
             style="-fx-background: #1e1e1e; -fx-background-color: #1e1e1e;"
             xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AdminViewController">
 
     <VBox spacing="15" style="-fx-background-color: #1e1e1e;">
         <padding>
             <Insets top="25" right="25" bottom="25" left="25"/>
         </padding>
 
+        <!-- ── Titel-Bereich ─────────────────────────────────────────────── -->
         <VBox spacing="5">
             <Label text="🛠️ Admin Dashboard"
                    style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
@@ -23,6 +32,7 @@
 
         <Separator style="-fx-opacity: 0.3;"/>
 
+        <!-- ── Benutzerverwaltung ────────────────────────────────────────── -->
         <Label text="👤 Benutzerverwaltung"
                style="-fx-text-fill: #cccccc; -fx-font-weight: bold; -fx-font-size: 14;"/>
 
@@ -43,6 +53,7 @@
 
         <Separator style="-fx-opacity: 0.3;"/>
 
+        <!-- ── Ticket-Konfiguration ──────────────────────────────────────── -->
         <Label text="⚙️ Ticket-Konfiguration (Kategorien, Status, Priorität)"
                style="-fx-text-fill: #cccccc; -fx-font-weight: bold; -fx-font-size: 14;"/>
 
@@ -54,12 +65,13 @@
             <Button text="➕ Hinzufügen"
                     style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 14; -fx-cursor: hand;"/>
         </HBox>
-        
+
         <ListView prefHeight="100"
                   style="-fx-background-color: #2b2b2b; -fx-border-color: #444444; -fx-background-radius: 8;"/>
 
         <Separator style="-fx-opacity: 0.3;"/>
 
+        <!-- ── System Logs ───────────────────────────────────────────────── -->
         <Label text="📜 System Logs"
                style="-fx-text-fill: #cccccc; -fx-font-weight: bold; -fx-font-size: 14;"/>
 
@@ -75,6 +87,26 @@
 
         <Separator style="-fx-opacity: 0.3;"/>
 
+        <!-- ── Statistik-Bereich (NEU) ───────────────────────────────────── -->
+        <Label text="📊 Statistik"
+               style="-fx-text-fill: #cccccc; -fx-font-weight: bold; -fx-font-size: 14;"/>
+
+        <Label text="Hier kannst du die Ticket-Statistik einsehen: Kategorienverteilung, Statusverteilung und Aktivitäten der letzten 7 Tage."
+               style="-fx-text-fill: #888888; -fx-font-size: 12;" wrapText="true"/>
+
+        <!--
+            Der Statistik-Button:
+            fx:id="statistikBtn"   → verbindet diesen Button mit der Variable im Controller
+            onAction="#onStatistikClick" → ruft die Methode onStatistikClick() im Controller auf
+        -->
+        <Button text="📊 Statistik öffnen"
+                fx:id="statistikBtn"
+                onAction="#onStatistikClick"
+                style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand; -fx-font-size: 13;"/>
+
+        <Separator style="-fx-opacity: 0.3;"/>
+
+        <!-- ── System-Aktionen ───────────────────────────────────────────── -->
         <Label text="🚀 System-Aktionen"
                style="-fx-text-fill: #f44336; -fx-font-weight: bold; -fx-font-size: 14;"/>
 
@@ -89,5 +121,3 @@
 
     </VBox>
 </ScrollPane>
-
-
